@@ -8,7 +8,7 @@ const success = (position) => {
   const {coords} = position;
   console.log(coords.latitude, coords.longitude);
   const link = `https://www.openstreetmap.org/#map=17/${coords.latitude}/${coords.longitude}`;
-  window.open(link)
+  writeToGeo(link)
 };
 
 const error = () => {
@@ -25,6 +25,14 @@ function writeToScreenOn(onMessage) {
   chat.appendChild(pre);
 }
 
+function writeToGeo(GeoLink) {
+  let pre = document.createElement('a');
+  pre.href = GeoLink;
+  pre.target = "_blank";
+  pre.innerHTML = "GEO-позиция";
+  pre.classList.add('on_mess');
+  chat.appendChild(pre);
+}
 function writeToScreenSand(sendMessage) {
   let pre = document.createElement('p');
   pre.classList.add('send_mess');
